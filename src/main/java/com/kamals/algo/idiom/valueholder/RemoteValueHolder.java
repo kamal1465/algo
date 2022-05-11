@@ -14,18 +14,15 @@ public class RemoteValueHolder implements ValueHolder
     private static final Map<String, Value> remoteValueMap = new ConcurrentHashMap<>();
     private static final Map<String, ReentrantReadWriteLock> lockMap = new HashMap<>();
 
-    @Autowired
-    private LocalValueHolder localValueHolder;
-
     @Override
     public Value getValue(String name)
     {
-        Value value = localValueHolder.getValue(name);
+        Value value = remoteValueMap.get(name);
         if (value == null)
         {
             synchronized (this) //Need Global Locking here..(Redis, Hz etc.)
             {
-                value = localValueHolder.getValue(name);
+                value = remoteValueMap.get(name);
                 if (value == null)
                 {
                     value = Value.generateValue();
@@ -40,13 +37,11 @@ public class RemoteValueHolder implements ValueHolder
     public void setValue(String name, Value value)
     {
         remoteValueMap.put(name, value);
-        localValueHolder.setValue(name, value);
     }
 
     @Override
     public void deleteValue(String name)
     {
         remoteValueMap.remove(name);
-        localValueHolder.deleteValue(name);
     }
 }

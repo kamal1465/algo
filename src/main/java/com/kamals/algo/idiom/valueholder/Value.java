@@ -1,5 +1,7 @@
 package com.kamals.algo.idiom.valueholder;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import java.util.Calendar;
 import java.util.Date;
 import java.util.Random;
@@ -7,7 +9,11 @@ import java.util.UUID;
 
 class Value
 {
+    protected static final String DATE_FORMAT_ISO = "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'";
+    protected static final String TIMEZONE = "IST";
+
     private String token;
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = DATE_FORMAT_ISO, timezone = TIMEZONE)
     private Date validTill;
 
     private Value(String token, Date validTill)
