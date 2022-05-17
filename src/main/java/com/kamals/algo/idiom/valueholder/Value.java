@@ -9,8 +9,8 @@ import java.util.UUID;
 
 class Value
 {
-    protected static final String DATE_FORMAT_ISO = "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'";
-    protected static final String TIMEZONE = "IST";
+    private static final String DATE_FORMAT_ISO = "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'";
+    private static final String TIMEZONE = "IST";
 
     private String token;
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = DATE_FORMAT_ISO, timezone = TIMEZONE)
