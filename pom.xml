@@ -88,13 +88,25 @@
             <artifactId>commons-collections4</artifactId>
             <version>4.4</version>
         </dependency>
-		<!-- https://mvnrepository.com/artifact/org.json/json -->
+
 		<dependency>
 			<groupId>org.json</groupId>
 			<artifactId>json</artifactId>
 			<version>20220320</version>
 		</dependency>
-	</dependencies>
+
+        <dependency>
+            <groupId>com.hazelcast</groupId>
+            <artifactId>hazelcast-all</artifactId>
+            <version>3.10.1</version>
+        </dependency>
+        <!--dependency>
+            <groupId>com.hazelcast</groupId>
+            <artifactId>hazelcast-client</artifactId>
+            <version>3.10.1</version>
+        </dependency-->
+
+    </dependencies>
 
 	<build>
 		<plugins>
