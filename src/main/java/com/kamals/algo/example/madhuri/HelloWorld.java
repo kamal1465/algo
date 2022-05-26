@@ -38,7 +38,7 @@ public class HelloWorld
                 int a = scanner.nextInt();
                 int b = scanner.nextInt();
 
-                System.out.println("Answer: " + add(a ,b));
+                System.out.println("Answer: " + a + " + " + b + add(a, b));
             }
             else if (option.equalsIgnoreCase("b"))
             {
@@ -46,7 +46,7 @@ public class HelloWorld
                 int a = scanner.nextInt();
                 int b = scanner.nextInt();
 
-                System.out.println("Answer: " + subtract(a, b));
+                System.out.println("Answer: " + a + " - " + b + subtract(a, b));
             }
             else if (option.equalsIgnoreCase("c"))
             {
@@ -54,7 +54,7 @@ public class HelloWorld
                 int a = scanner.nextInt();
                 int b = scanner.nextInt();
 
-                System.out.println("Answer: " + multiply(a, b));
+                System.out.println("Answer: " + a + " * " + b + multiply(a, b));
             }
             else if (option.equalsIgnoreCase("d"))
             {
@@ -62,10 +62,11 @@ public class HelloWorld
                 int a = scanner.nextInt();
                 int b = scanner.nextInt();
 
-                System.out.println("Answer: " + divide(a, b));
+                System.out.println("Answer: " + a + " / " + b + divide(a, b));
             }
             else
             {
+                System.out.println(option);
                 System.out.println("WRONG OPTION. TRY AGAIN.");
             }
         }
@@ -80,10 +81,12 @@ public class HelloWorld
     {
         return a - b;
     }
+
     private static int multiply(int a, int b)
     {
         return a * b;
     }
+
     private static int divide(int a, int b)
     {
         return a / b;

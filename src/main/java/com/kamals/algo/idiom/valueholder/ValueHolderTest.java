@@ -19,7 +19,6 @@ public class ValueHolderTest
     public static void main(String[] args)
     {
         ValueHolderTest valueHolderTest = new ValueHolderTest();
-        Value val = valueHolderTest.localValueHolder.getValue("abc");
-        System.out.println(val);
+        Value val = valueHolderTest.perform();
     }
 }

@@ -2,6 +2,10 @@ package com.kamals.algo.algos.ds;
 
 import java.util.*;
 
+/**
+ *
+ * @param <T>
+ */
 public class UnionFind<T>
 {
     private final Map<T, Node<T>> records;
