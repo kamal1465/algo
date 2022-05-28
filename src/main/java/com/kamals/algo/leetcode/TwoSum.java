@@ -41,9 +41,9 @@ public class TwoSum
         int[] nums = new int[]{2, 7, 11, 15};
         int target = 22;
         int[] arr = twoSum.new Solution().twoSum(nums, target);
-        Util.printArr(nums);
+        Util.printArr2(nums);
         System.out.println("Target => " + target);
-        Util.printArr(arr);
+        Util.printArr2(arr);
     }
 
     class Solution

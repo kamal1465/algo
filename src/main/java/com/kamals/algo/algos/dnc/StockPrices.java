@@ -20,7 +20,7 @@ public class StockPrices
             P[i] = rnd.nextInt(N);
         }
 
-        Util.printArr(P);
+        Util.printArr2(P);
 
         long t1 = System.nanoTime();
         Trade t = getTrade(P, 0, N - 1);

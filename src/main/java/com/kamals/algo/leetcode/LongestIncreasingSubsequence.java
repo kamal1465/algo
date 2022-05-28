@@ -80,7 +80,6 @@ public class LongestIncreasingSubsequence
      * Maintain an Map of LIS lengths seen so far vs. Index of last element with that LIS length
      * LIS length can be 1 <= LIS Length <= N, an array of size N can work as map with index as key (LIS length)
      * Additionally this array be binary searched, since indexes are sorted. Even without binary search, it is pretty fast
-     * N*Log(N) Solution using Binary Search
      *
      * @param nums
      * @return
@@ -90,7 +89,6 @@ public class LongestIncreasingSubsequence
         int N = nums.length;
         int[] lisLastPos = new int[N + 1];
         Arrays.fill(lisLastPos, -1);
-        //LIS of size 1's last position is 0. First element whatever is, is a LIS of 1, seen yet
         lisLastPos[1] = 0;
         int max = 1;
         Util.printArr2(nums);
@@ -112,8 +110,63 @@ public class LongestIncreasingSubsequence
             {
                 lisLastPos[1] = i;
             }
-            Util.printArr(lisLastPos);
+            Util.printArr2(lisLastPos);
         }
         return max;
+    }
+
+    /**
+     * N*Log(N) Solution using Binary Search
+     *
+     * @param nums
+     * @return
+     */
+    public int lengthOfLIS3(int[] nums)
+    {
+        int N = nums.length;
+        int[] lisLastPos = new int[N + 1];
+        Arrays.fill(lisLastPos, -1);
+        //LIS of size 1's last position is 0. First element whatever is, is a LIS of 1, seen yet
+        lisLastPos[1] = 0;
+        int max = 1;
+        Util.printArr2(nums);
+        for (int i = 1; i < N; i++)
+        {
+            max = find(nums, lisLastPos, i, max);
+            Util.printArr2(lisLastPos);
+        }
+        return max;
+    }
+
+    private int find(int[] nums, int[] lisLastPos, int index, int maxLis)
+    {
+        int start = 1, end = maxLis, maxIn = -1;
+
+        while (start <= end)
+        {
+            int j = (start + end) / 2;
+
+            int pos = lisLastPos[j];
+            if (nums[index] > nums[pos])
+            {
+                maxIn = j;
+                start = j + 1;
+            }
+            else
+            {
+                end = j - 1;
+            }
+        }
+
+        if (maxIn > -1)
+        {
+            lisLastPos[maxIn + 1] = index;
+            maxLis = Math.max(maxIn + 1, maxLis);
+        }
+        else
+        {
+            lisLastPos[1] = index;
+        }
+        return maxLis;
     }
 }

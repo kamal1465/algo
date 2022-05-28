@@ -4,23 +4,19 @@ import java.util.Arrays;
 
 public class Util
 {
-    public static void printArr(int[] arr)
+    public static String mapToString(int[] a, int[] b)
     {
-        System.out.print('[');
-        int i = 0;
-        for (int x : arr)
+        StringBuilder sb = new StringBuilder();
+        sb.append('[');
+        int N = Math.max(a.length, b.length);
+        for (int i = 0; i < N; i++)
         {
-            if (i == 0)
-            {
-                System.out.print(x);
-            }
-            else
-            {
-                System.out.print("  " + x);
-            }
-            i = 1;
+            sb.append(i < a.length ? a[i] : "").append("=").append(i < b.length ? b[i] : "").append(", ");
         }
-        System.out.println(']');
+        sb.deleteCharAt(sb.length() - 1);
+        sb.deleteCharAt(sb.length() - 1);
+        sb.append(']');
+        return sb.toString();
     }
 
     public static void printArr2(int[] arr)
@@ -36,8 +32,8 @@ public class Util
         {
             sb.append(Arrays.toString(a)).append(", ");
         }
-        sb.deleteCharAt(sb.length()-1);
-        sb.deleteCharAt(sb.length()-1);
+        sb.deleteCharAt(sb.length() - 1);
+        sb.deleteCharAt(sb.length() - 1);
         sb.append(']');
         System.out.println(sb);
     }
