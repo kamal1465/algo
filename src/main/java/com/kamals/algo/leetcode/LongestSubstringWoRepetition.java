@@ -24,6 +24,14 @@ import java.util.Set;
  */
 public class LongestSubstringWoRepetition
 {
+    public static void main(String[] args)
+    {
+        String s = "pwwkew";
+        LongestSubstringWoRepetition longestSubstringWoRepetition = new LongestSubstringWoRepetition();
+        int n = longestSubstringWoRepetition.lengthOfLongestSubstring_Set(s);
+        System.out.println(n);
+    }
+
     public int lengthOfLongestSubstring(String s)
     {
         char[] a = s.toCharArray();
@@ -54,7 +62,7 @@ public class LongestSubstringWoRepetition
         for (int i = 0; i < l; i++)
         {
             Integer p = map.put(a[i], i);
-            if (p != null)
+            if (p != null && p >= start)
             {
                 max = Math.max(max, i - start);
                 start = p + 1;
@@ -78,7 +86,7 @@ public class LongestSubstringWoRepetition
                 max = Math.max(max, i - start);
                 while (a[start] != a[i])
                 {
-                    set.remove(a[i]);
+                    set.remove(a[start]);
                     start++;
                 }
                 start++;
