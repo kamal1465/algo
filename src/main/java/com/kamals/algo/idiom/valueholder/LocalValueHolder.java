@@ -6,6 +6,7 @@ import org.springframework.stereotype.Component;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.locks.ReadWriteLock;
 import java.util.concurrent.locks.ReentrantReadWriteLock;
 
 @Component("localValueHolder")
@@ -20,10 +21,19 @@ public class LocalValueHolder implements ValueHolder
     @Override
     public Value getValue(String name)
     {
-        Value value = valueMap.get(name);
+        Value value;
+        ReadWriteLock reentrantReadWriteLock = getLock(name);
+        reentrantReadWriteLock.readLock().lock();
+        try
+        {
+            value = valueMap.get(name);
+        }
+        finally
+        {
+            reentrantReadWriteLock.readLock().unlock();
+        }
         if (value == null)
         {
-            ReentrantReadWriteLock reentrantReadWriteLock = getLock(name);
             reentrantReadWriteLock.writeLock().lock();
             try
             {
