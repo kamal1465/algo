@@ -9,7 +9,7 @@ public class StockPrices
 
     public static void main(String[] args)
     {
-        int N = 1024*1024;
+        int N = 1000000;
 
         int[] P = new int[N];
 
@@ -17,7 +17,7 @@ public class StockPrices
 
         for (int i = 0; i < N; i++)
         {
-            P[i] = rnd.nextInt(N);
+            P[i] = rnd.nextInt(10000);
         }
 
         Util.printArr2(P);
@@ -37,7 +37,7 @@ public class StockPrices
         }
         System.out.println("Times taken = " + (t2 - t1) / 1000000);
         t1 = System.nanoTime();
-        t = getTrade(P);
+        t = getTradeOptimized(P);
         t2 = System.nanoTime();
         if (t.profit > 0)
         {
@@ -53,6 +53,14 @@ public class StockPrices
         System.out.println("Times taken = " + (t2 - t1) / 1000000);
     }
 
+    /**
+     * DIVIDE & CONQUER O(N) OR O(NlogN)
+     *
+     * @param P
+     * @param i
+     * @param j
+     * @return
+     */
     private static Trade getTrade(int[] P, int i, int j)
     {
         if (i == j)
@@ -81,6 +89,12 @@ public class StockPrices
         return c; //new Trade(buy, sell, min, max, profit);
     }
 
+    /**
+     * BRUTE FORCE - To test against O(N^2)
+     *
+     * @param P
+     * @return
+     */
     private static Trade getTrade(int[] P)
     {
         int N = P.length;
@@ -100,6 +114,54 @@ public class StockPrices
             }
         }
         return new Trade(buy, sell, 0, 0, profit);
+    }
+
+    /**
+     * OPTIMUM - Time O(N) SPACE O(1)
+     *
+     * @param P
+     * @return
+     */
+    private static Trade getTradeOptimized(int[] P)
+    {
+        int N = P.length;
+        int minPrice = P[0], maxProfit = 0;
+        int minI = 0, sell = -1, buy = -1;
+
+        for (int i = 1; i < N; i++)
+        {
+            int profit = P[i] - minPrice;
+            if (profit <= 0)
+            {
+                minPrice = P[i];
+                minI = i;
+            }
+            else if (profit > maxProfit)
+            {
+                maxProfit = profit;
+                sell = i;
+                buy = minI;
+            }
+        }
+        return new Trade(buy, sell, 0, 0, maxProfit);
+    }
+
+    /**
+     * OPTIMUM - Time O(N) SPACE O(1)
+     *
+     * @param P
+     * @return
+     */
+    private static int getTradeOptimized2(int[] P)
+    {
+        int minPrice = P[0];
+        int maxProfit = 0;
+        for (int i = 1; i < P.length; i++)
+        {
+            maxProfit = Math.max(maxProfit, P[i] - minPrice);
+            minPrice = Math.min(minPrice, P[i]);
+        }
+        return maxProfit;
     }
 
     private static class Trade
