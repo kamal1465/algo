@@ -27,10 +27,10 @@ public class Util
     public static void printArr2(int[][] arr)
     {
         StringBuilder sb = new StringBuilder();
-        sb.append('[');
+//        sb.append('[');
         for (int[] a : arr)
         {
-            sb.append(Arrays.toString(a)).append(", ");
+            sb.append(Arrays.toString(a)).append("\n");
         }
         sb.deleteCharAt(sb.length() - 1);
         sb.deleteCharAt(sb.length() - 1);

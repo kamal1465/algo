@@ -3,9 +3,11 @@ package com.kamals.algo.leetcode;
 import com.kamals.algo.algos.util.Util;
 
 import java.util.Arrays;
+import java.util.Map;
+import java.util.TreeMap;
 
 /**
- * Given an integer array nums, return the length of the longest strictly increasing subsequence.
+ * ;
  * <p>
  * A subsequence is a sequence that can be derived from an array by deleting some or no elements without changing the order of the remaining elements. For example, [3,6,2,7] is a subsequence of the array [0,3,1,6,2,2,7].
  * <p>
@@ -38,6 +40,9 @@ public class LongestIncreasingSubsequence
         int[] nums = new int[]{10, 9, 2, 5, 3, 7, 101, 18};
         nums = new int[]{9, 3, 6, 5, 2, 7, 11, 6, 7, 8, 2};
         System.out.println(longestIncreasingSubsequence.lengthOfLIS2(nums));
+
+        TreeMap<Integer, Integer> map = new TreeMap<>();
+        map.ceilingKey(1);
     }
 
     /**
