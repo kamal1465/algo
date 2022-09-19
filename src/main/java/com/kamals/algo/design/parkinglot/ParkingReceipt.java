@@ -1,9 +1,12 @@
 package com.kamals.algo.design.parkinglot;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class ParkingReceipt
 {
+    private final ParkingType parkingType;
+
     private final String receiptNumber;
 
     private final VehicleType vehicleType;
@@ -14,8 +17,11 @@ public class ParkingReceipt
 
     private final Integer fees;
 
-    public ParkingReceipt(String receiptNumber, VehicleType vehicleType, Date entryTime, Date exitTime, Integer fees)
+    private static final SimpleDateFormat sdf = new SimpleDateFormat("d-MMM h:mm a");
+
+    public ParkingReceipt(ParkingType parkingType, String receiptNumber, VehicleType vehicleType, Date entryTime, Date exitTime, Integer fees)
     {
+        this.parkingType = parkingType;
         this.receiptNumber = receiptNumber;
         this.vehicleType = vehicleType;
         this.entryTime = entryTime;
@@ -51,10 +57,10 @@ public class ParkingReceipt
     @Override
     public String toString()
     {
-        return "Parking Receipt [" + vehicleType + "]" +
-                "\n Receipt Number: " + receiptNumber +
-                "\n Entry Date-Time: " + entryTime +
-                "\n Exit Date-Time: " + exitTime +
+        return parkingType + " Parking Receipt [" + vehicleType + "]" +
+                "\n Receipt No: " + receiptNumber +
+                "\n Entry: " + (entryTime != null ? sdf.format(entryTime) : entryTime) +
+                "\n Exit: " + (exitTime != null ? sdf.format(exitTime) : exitTime) +
                 "\n Fees: " + fees + "\n";
     }
 }
