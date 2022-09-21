@@ -2,19 +2,30 @@ package com.kamals.algo.design.parkinglot;
 
 import java.util.Calendar;
 
+/**
+ * @author Kamal.Sultania
+ */
 public class ParkingLotTest
 {
     public static void main(String[] args)
     {
         testMall();
-        testStadium();
         testAirport();
+        testStadium();
     }
 
     private static void testMall()
     {
         ParkingLot parkingLot = new ParkingLot.Builder().mall(10, 10, 10).create();
 
+        testFare(parkingLot, VehicleType.SCOOTER_BIKE, 1);
+        testFare(parkingLot, VehicleType.SCOOTER_BIKE, 5);
+        testFare(parkingLot, VehicleType.SCOOTER_BIKE, 12);
+        testFare(parkingLot, VehicleType.CAR_SUV, 1);
+        testFare(parkingLot, VehicleType.CAR_SUV, 5);
+        testFare(parkingLot, VehicleType.CAR_SUV, 12);
+        testFare(parkingLot, VehicleType.BUS_TRUCK, 1);
+        testFare(parkingLot, VehicleType.BUS_TRUCK, 5);
         ParkingTicket parkingTicket1 = parkingLot.admitVehicle(VehicleType.CAR_SUV);
         ParkingTicket parkingTicket2 = parkingLot.admitVehicle(VehicleType.SCOOTER_BIKE);
         ParkingTicket parkingTicket3 = parkingLot.admitVehicle(VehicleType.BUS_TRUCK);
@@ -37,7 +48,18 @@ public class ParkingLotTest
     private static void testAirport()
     {
         ParkingLot parkingLot = new ParkingLot.Builder().airport(10, 10).create();
-
+        testFare(parkingLot, VehicleType.SCOOTER_BIKE, 1);
+        testFare(parkingLot, VehicleType.SCOOTER_BIKE, 5);
+        testFare(parkingLot, VehicleType.SCOOTER_BIKE, 12);
+        testFare(parkingLot, VehicleType.SCOOTER_BIKE, 25);
+        testFare(parkingLot, VehicleType.SCOOTER_BIKE, 121);
+        testFare(parkingLot, VehicleType.CAR_SUV, 1);
+        testFare(parkingLot, VehicleType.CAR_SUV, 5);
+        testFare(parkingLot, VehicleType.CAR_SUV, 12);
+        testFare(parkingLot, VehicleType.CAR_SUV, 25);
+        testFare(parkingLot, VehicleType.CAR_SUV, 121);
+        testFare(parkingLot, VehicleType.BUS_TRUCK, 1);
+        testFare(parkingLot, VehicleType.BUS_TRUCK, 5);
         ParkingTicket parkingTicket1 = parkingLot.admitVehicle(VehicleType.CAR_SUV);
         ParkingTicket parkingTicket2 = parkingLot.admitVehicle(VehicleType.SCOOTER_BIKE);
         ParkingTicket parkingTicket3 = parkingLot.admitVehicle(VehicleType.BUS_TRUCK);
@@ -60,7 +82,16 @@ public class ParkingLotTest
     private static void testStadium()
     {
         ParkingLot parkingLot = new ParkingLot.Builder().stadium(10, 10).create();
-
+        testFare(parkingLot, VehicleType.SCOOTER_BIKE, 1);
+        testFare(parkingLot, VehicleType.SCOOTER_BIKE, 5);
+        testFare(parkingLot, VehicleType.SCOOTER_BIKE, 13);
+        testFare(parkingLot, VehicleType.SCOOTER_BIKE, 17);
+        testFare(parkingLot, VehicleType.CAR_SUV, 1);
+        testFare(parkingLot, VehicleType.CAR_SUV, 5);
+        testFare(parkingLot, VehicleType.CAR_SUV, 13);
+        testFare(parkingLot, VehicleType.CAR_SUV, 17);
+        testFare(parkingLot, VehicleType.BUS_TRUCK, 1);
+        testFare(parkingLot, VehicleType.BUS_TRUCK, 5);
         ParkingTicket parkingTicket1 = parkingLot.admitVehicle(VehicleType.CAR_SUV);
         ParkingTicket parkingTicket2 = parkingLot.admitVehicle(VehicleType.SCOOTER_BIKE);
         ParkingTicket parkingTicket3 = parkingLot.admitVehicle(VehicleType.BUS_TRUCK);
@@ -79,6 +110,11 @@ public class ParkingLotTest
         System.out.print(parkingReceipt4);
 
         testFare(parkingLot, VehicleType.CAR_SUV, 10);
+    }
+
+    private static void testFare(ParkingLot parkingLot, VehicleType vehicleType)
+    {
+        testFare(parkingLot, vehicleType, 0);
     }
 
     private static void testFare(ParkingLot parkingLot, VehicleType vehicleType, int hours)

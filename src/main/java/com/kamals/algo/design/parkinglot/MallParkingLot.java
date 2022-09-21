@@ -2,6 +2,9 @@ package com.kamals.algo.design.parkinglot;
 
 import java.util.*;
 
+/**
+ * @author Kamal.Sultania
+ */
 public class MallParkingLot extends ParkingLot
 {
     private MallParkingLot(ParkingType parkingType, Map<VehicleType, Set<Integer>> capacity, Map<VehicleType, FeeCalculator> feeCalculator)

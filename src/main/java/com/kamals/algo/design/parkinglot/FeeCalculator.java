@@ -4,6 +4,9 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 
+/**
+ * @author Kamal.Sultania
+ */
 public class FeeCalculator
 {
     private final Collection<FeeModel> feeModels;

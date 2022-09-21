@@ -3,6 +3,9 @@ package com.kamals.algo.design.parkinglot;
 import java.util.*;
 import java.util.concurrent.atomic.AtomicLong;
 
+/**
+ * @author Kamal.Sultania
+ */
 public class ParkingLot
 {
     protected final ParkingType parkingType;

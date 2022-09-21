@@ -1,5 +1,8 @@
 package com.kamals.algo.design.parkinglot;
 
+/**
+ * @author Kamal.Sultania
+ */
 public enum VehicleType
 {
     SCOOTER_BIKE("Scooter/Bike"),

@@ -3,6 +3,9 @@ package com.kamals.algo.design.parkinglot;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+/**
+ * @author Kamal.Sultania
+ */
 public class ParkingReceipt
 {
     private final ParkingType parkingType;

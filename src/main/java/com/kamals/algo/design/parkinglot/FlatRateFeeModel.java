@@ -1,5 +1,8 @@
 package com.kamals.algo.design.parkinglot;
 
+/**
+ * @author Kamal.Sultania
+ */
 public class FlatRateFeeModel implements FeeModel
 {
     private final Range RANGE;
@@ -17,15 +20,10 @@ public class FlatRateFeeModel implements FeeModel
 
     public int calculateFees(double hours)
     {
-        if (CHAINING && RANGE.exceeds(hours))
+        if (RANGE.belongs(hours))
         {
-            int applicableHours = RANGE.applicableHours(hours);
+            double applicableHours = CHAINING ? RANGE.applicableHours(hours) : hours;
             int numPeriods = (int) Math.ceil(applicableHours / DURATION);
-            return numPeriods * RATE;
-        }
-        if (!CHAINING && RANGE.belongs(hours))
-        {
-            int numPeriods = (int) Math.ceil(hours / DURATION);
             return numPeriods * RATE;
         }
         return 0;

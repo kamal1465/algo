@@ -1,5 +1,8 @@
 package com.kamals.algo.design.parkinglot;
 
+/**
+ * @author Kamal.Sultania
+ */
 public class Range
 {
     private final Integer min;
@@ -30,11 +33,11 @@ public class Range
         return max != null && d >= (double) max;
     }
 
-    int applicableHours(double d)
+    double applicableHours(double d)
     {
         if (min != null && d >= (double) min)
         {
-            return (int) Math.ceil(d - (double) min);
+            return d - (double) min;
         }
         return -1;
     }
