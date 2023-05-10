@@ -1,6 +1,9 @@
 package com.kamals.algo.example;
 
-import com.sun.org.apache.xerces.internal.impl.dv.util.HexBin;
+//Legacy java 8 import
+//import com.sun.org.apache.xerces.internal.impl.dv.util.HexBin;
+
+import org.apache.xerces.impl.dv.util.HexBin;
 
 import java.io.UnsupportedEncodingException;
 import java.security.MessageDigest;

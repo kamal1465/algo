@@ -83,4 +83,11 @@ public class TestCurrency {
         }
 
     }
+
+    private static void test23()
+    {
+        TreeSet<Integer> x = new TreeSet<>();
+
+//        x.ceilin()
+    }
 }

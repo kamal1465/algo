@@ -1,7 +1,8 @@
 package com.kamals.algo.algos.greedy;
 
 import com.kamals.algo.algos.ds.BinaryTree;
-import javafx.util.Pair;
+import org.springframework.data.util.Pair;
+//import org.apache.commons.lang3.tuple.Pair;
 
 import java.util.*;
 
@@ -21,14 +22,14 @@ public class HuffmanEncoding
 
         System.out.println(frequencies);
 
-        Comparator<BinaryTree.Node<Pair<Character, Integer>>> comp = Comparator.comparingInt(o -> o.getVal().getValue());
+        Comparator<BinaryTree.Node<Pair<Character, Integer>>> comp = Comparator.comparingInt(o -> o.getVal().getSecond());
         //(a, b) -> a.getVal().getValue() - b.getVal().getValue();
 
         PriorityQueue<BinaryTree.Node<Pair<Character, Integer>>> priorityQueue = new PriorityQueue<>(comp);
 
         for (Map.Entry<Character, Integer> entry : frequencies.entrySet())
         {
-            Pair<Character, Integer> pair = new Pair<>(entry.getKey(), entry.getValue());
+            Pair<Character, Integer> pair = Pair.of(entry.getKey(), entry.getValue());
             BinaryTree.Node<Pair<Character, Integer>> node = new BinaryTree.Node<>(pair, null, null);
             priorityQueue.add(node);
         }
@@ -38,7 +39,7 @@ public class HuffmanEncoding
             BinaryTree.Node<Pair<Character, Integer>> node1 = priorityQueue.poll();
             BinaryTree.Node<Pair<Character, Integer>> node2 = priorityQueue.poll();
 
-            Pair<Character, Integer> pair = new Pair<>(null, node1.getVal().getValue() + node2.getVal().getValue());
+            Pair<Character, Integer> pair = Pair.of(null, node1.getVal().getSecond() + node2.getVal().getSecond());
 
             BinaryTree.Node<Pair<Character, Integer>> node = new BinaryTree.Node<>(pair, node1, node2);
 
@@ -69,7 +70,7 @@ public class HuffmanEncoding
     private static void convertEncoding(BinaryTree.Node<Pair<Character, Integer>> node, StringBuffer bits, Map<Character, StringBuffer> encoding)
     {
         Pair<Character, Integer> val = node.getVal();
-        Character c = val.getKey();
+        Character c = val.getFirst();
         if (c != null)
         {
             encoding.put(c, bits);
