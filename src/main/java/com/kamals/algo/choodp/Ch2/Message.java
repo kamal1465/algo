@@ -1,4 +1,4 @@
-package com.kamals.algo.choodp.Ch2.mail;
+package com.kamals.algo.choodp.Ch2;
 
 /**
    A message left by the caller.

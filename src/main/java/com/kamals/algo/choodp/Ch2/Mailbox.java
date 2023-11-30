@@ -1,4 +1,4 @@
-package com.kamals.algo.choodp.Ch2.mail;
+package com.kamals.algo.choodp.Ch2;
 
 /**
    A mailbox contains messages that can be listed, kept or discarded.

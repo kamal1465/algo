@@ -1,6 +1,6 @@
 package com.kamals.algo.choodp.Ch3.queue;
 
-import com.kamals.algo.choodp.Ch2.mail.Message;
+import com.kamals.algo.choodp.Ch2.Message;
 
 /**
     A first-in, first-out bounded collection of messages. 
