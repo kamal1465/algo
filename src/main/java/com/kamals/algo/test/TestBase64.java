@@ -1,12 +1,9 @@
 package com.kamals.algo.test;
 
 import org.apache.commons.io.FileUtils;
-import org.apache.commons.io.IOUtils;
 import org.springframework.util.Base64Utils;
 
-import java.io.BufferedReader;
 import java.io.File;
-import java.io.FileReader;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.util.Base64;
@@ -28,7 +25,7 @@ public class TestBase64
 
     static void encodeFile() throws IOException
     {
-        String inputFilename = "/Users/kamal.sultania/Downloads/bulk_node_priority_upload_sheet.18128d4d.xlsx";
+        String inputFilename = "/Users/kamal.sultania/Downloads/manualPdd.d0d747ed (1).csv";
 
         File inputFile = new File(inputFilename);
         byte[] ba = FileUtils.readFileToByteArray(inputFile);

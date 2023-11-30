@@ -6,6 +6,10 @@ public class RegExTest
 {
     public static void main(String[] args)
     {
+        testRegex();
+    }
+    public static void test1()
+    {
         String priceRangeQueryRegex = "(?i)(.*\\s+)?under\\s+(rs\\.?\\s*)?(\\d+(\\.\\d+)?k?)(\\s*rs(\\.)?)?(\\s+.*)?";
 
         String DISCOUNT_QUERY_REGEX = "(?i)(^|.*\\s+)discount(.*)";
@@ -36,5 +40,12 @@ public class RegExTest
                 System.out.println(query);
             }*/
         } while (!query.equalsIgnoreCase("bye"));
+    }
+
+    private static void testRegex()
+    {
+        String CSV_REGEX = "[-a-zA-Z0-9\\.]*";
+        String s = "ckuscnewu...1289127891w7kcnkwnbck--jwc----";
+        System.out.println(s.matches(CSV_REGEX));
     }
 }
