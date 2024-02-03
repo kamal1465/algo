@@ -1,6 +1,7 @@
 package com.kamals.algo.algos.util;
 
 import java.util.Arrays;
+import java.util.Random;
 
 public class Util
 {
@@ -22,6 +23,24 @@ public class Util
     public static void printArr2(int[] arr)
     {
         System.out.println(Arrays.toString(arr));
+    }
+
+    public static void printArr2(long[] arr)
+    {
+        System.out.println(Arrays.toString(arr));
+    }
+
+    public static int[] genRandomArray(int low, int high, int len)
+    {
+        Random random = new Random();
+        int limit = high - low;
+        int[] nums = new int[len];
+        for (int i = 0; i < len; i++)
+        {
+            int x = random.nextInt(limit) + low;
+            nums[i] = x;
+        }
+        return nums;
     }
 
     public static void printArr2(int[][] arr)

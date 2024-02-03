@@ -87,6 +87,27 @@ public class BestTimeToBuySellStock
         return profit[k][n];
     }
 
+    public int maxProfit4(int k, int[] prices) {
+        int n = prices.length;
+        int[][] dp = new int[k + 1][n + 1];
+
+        for (int i = 1; i <= k; i++)
+        {
+            for (int j = 2; j <= n; j++)
+            {
+                dp[i][j] = dp[i][j - 1];
+
+                int localMax = Integer.MIN_VALUE;
+                for (int q = 1; q < j; q++)
+                {
+                    localMax = Math.max(localMax, dp[i - 1][q - 1] + prices[j - 1] - prices[q - 1]);
+                }
+                dp[i][j] = Math.max(dp[i][j], localMax);
+            }
+        }
+        return dp[k][n];
+    }
+
     /**
      * You are given an array prices where prices[i] is the price of a given stock on the ith day.
      * Find the maximum profit you can achieve. You may complete as many transactions as you like (i.e., buy one and sell one share of the stock multiple times) with the following restrictions:

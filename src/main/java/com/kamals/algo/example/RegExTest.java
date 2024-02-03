@@ -44,8 +44,8 @@ public class RegExTest
 
     private static void testRegex()
     {
-        String CSV_REGEX = "[-a-zA-Z0-9\\.]*";
-        String s = "ckuscnewu...1289127891w7kcnkwnbck--jwc----";
+        String CSV_REGEX = "^[-a-zA-Z0-9\\. \"\']*$";
+        String s = "ckuscnewu...1289127891w7kc\"\"\'\'\'kwnb  ck--jwc----";
         System.out.println(s.matches(CSV_REGEX));
     }
 }
