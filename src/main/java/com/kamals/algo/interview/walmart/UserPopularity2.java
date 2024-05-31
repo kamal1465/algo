@@ -26,6 +26,8 @@ class UserPopularity2Impl implements UserPopularity2
         Set<Long> users = popData.computeIfAbsent(p, u -> new LinkedHashSet<>());
         users.add(userId);
         userPop.put(userId, p);
+        popData.floorEntry(1);
+        popData.higherEntry(1);
     }
 
     @Override

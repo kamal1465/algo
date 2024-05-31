@@ -9,6 +9,9 @@ import org.springframework.util.Assert;
 import java.nio.charset.StandardCharsets;
 import java.security.SecureRandom;
 
+/**
+ * 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
+ */
 public class JsyptTest
 {
     public static void main(String[] args)
@@ -25,6 +28,7 @@ public class JsyptTest
     public static void encrypt()
     {
         String pwd = "MWJBSzN0THVG";
+//        String pwd = "QUpJTmg2QnhV";
         //String pwd = "Tkd1YlA3Z2dBYUlyazNFYmlU";
 
         BasicTextEncryptor encryptor1 = new BasicTextEncryptor();
@@ -111,7 +115,9 @@ public class JsyptTest
 
     public static void decrypt()
     {
-        String pwd = "storeordersituat";
+//        String pwd = "storeordersituat";
+        String pwd = "MWJBSzN0THVG";
+//        String pwd = "QUpJTmg2QnhV";
         //String pwd = "Tkd1YlA3Z2dBYUlyazNFYmlU";
 
         BasicTextEncryptor encryptor1 = new BasicTextEncryptor();
@@ -121,7 +127,11 @@ public class JsyptTest
         encryptor2.setPassword(pwd);
         encryptor3.setPassword(pwd);
         TextEncryptor[] textEncryptors = new TextEncryptor[]{encryptor3};
-        String[] ciphers = new String[]{"cE57M3PBT6eLPdn1BMw3ocWHhXkcLR1ZQ/RDZjyBsTnTDe+jQy80UEqwF12plBmJiNrRICUT1DuDyYU+nKhBxA=="};
+        String[] ciphers = new String[]{//"cE57M3PBT6eLPdn1BMw3ocWHhXkcLR1ZQ/RDZjyBsTnTDe+jQy80UEqwF12plBmJiNrRICUT1DuDyYU+nKhBxA==",
+//                "E+pDtS50eDmtEMHnItThLjC+pf7izuCA0SDJ8chZEmGZG+50FoEMterY/EpoS3PW",
+//                "0T1zZY+zZm9OjvFVqKVQqj0TD9WibFbxoS/SZVTcPh7aeoPDJaslvmZG552RQF67",
+                "As0ED9g9hnFHr64zGJEwG49hZZSTXNqqIPg7dCYWBXWmwaweu/4+gLxiypdF3/6n5pWwMNsoNTqbjEmk5S7gMQ=="
+        };
 
         for (String t : ciphers)
         {

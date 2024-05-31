@@ -24,7 +24,7 @@ public class DAG
             this.adjList = new HashMap<>();
             this.topologicalOrder = new ArrayList<>();
 
-            // By default all vertces are WHITE
+            // By default all vertices are WHITE
             for (int i = 0; i < numCourses; i++)
             {
                 this.color.put(i, WHITE);
