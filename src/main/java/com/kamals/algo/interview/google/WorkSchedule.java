@@ -1,5 +1,10 @@
 package com.kamals.algo.interview.google;
 
+import com.kamals.algo.algos.util.Util;
+
+import java.util.LinkedList;
+import java.util.Stack;
+
 /**
  * Compute work schedule to maximize earnings.
  * 1 Day travel time will be needed to switch cities.
@@ -141,6 +146,68 @@ public class WorkSchedule
         return sb.toString();
     }
 
+    private static String computeSchedule3(int[] A, int[] B)
+    {
+        int n = A.length;
+        int[] max = new int[n];
+        int[] maxI = new int[n];
+
+        int x = 0, y = 0;
+
+        for (int i = 0; i < n; i++)
+        {
+            if (i == 0)
+            {
+                x = A[i];
+                y = B[i];
+            }
+            else if (i == 1)
+            {
+                x = A[i] + A[i - 1];
+                y = B[i] + B[i - 1];
+            }
+            else
+            {
+                x = Math.max(max[i - 2], x) + A[i];
+                y = Math.max(max[i - 2], y) + B[i];
+            }
+            max[i] = Math.max(x, y);
+            maxI[i] = max[i] == x ? 0 : 1;
+        }
+
+        char[] schedule = new char[n];
+
+        Util.printArr2(max);
+        Util.printArr2(maxI);
+
+        genSchedule(A, B, max, maxI, n - 1, schedule);
+
+        return new String(schedule);
+    }
+
+    private static void genSchedule(int[] a, int[] b, int[] max, int[] maxI, int i, char[] schedule)
+    {
+        int city = maxI[i];
+        int earning = max[i];
+        while (i >= 0)
+        {
+            schedule[i] = (city == 0 ? 'A' : 'B');
+
+            earning = earning - (city == 0 ? a[i] : b[i]);
+
+            if (i >= 2 && max[i - 2] == earning)
+            {
+                schedule[i- 1] = 'T';
+                city = 1 - city;
+                i -= 2;
+            }
+            else
+            {
+                i--;
+            }
+        }
+    }
+
     public static void main(String[] args)
     {
         int[] a = new int[]{23, 4, 5, 10};
@@ -153,8 +220,8 @@ public class WorkSchedule
         System.out.println(computeSchedule(a, b));
         System.out.println(computeSchedule(c, d));
         System.out.println();
-        System.out.println(computeSchedule2(e, d));
-        System.out.println(computeSchedule2(a, b));
-        System.out.println(computeSchedule2(c, d));
+//        System.out.println(computeSchedule3(e, d));
+        System.out.println(computeSchedule3(a, b));
+        System.out.println(computeSchedule3(c, d));
     }
 }

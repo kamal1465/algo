@@ -55,6 +55,21 @@ public class Util
         sb.deleteCharAt(sb.length() - 1);
         sb.append(']');
         System.out.println(sb);
+        System.out.println();
+    }
+
+    public static void printArr2(char[][] arr)
+    {
+        StringBuilder sb = new StringBuilder();
+//        sb.append('[');
+        for (char[] a : arr)
+        {
+            sb.append(Arrays.toString(a)).append("\n");
+        }
+        sb.deleteCharAt(sb.length() - 1);
+        sb.deleteCharAt(sb.length() - 1);
+        sb.append(']');
+        System.out.println(sb);
     }
 
     public static void main(String[] args)

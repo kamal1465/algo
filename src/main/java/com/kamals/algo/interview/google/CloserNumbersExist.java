@@ -43,7 +43,7 @@ public class CloserNumbersExist
         int n = a.length;
         for (int i = 0; i < n - k; i++)
         {
-            for (int j =  i + 1; j <= i + k; j++)
+            for (int j = i + 1; j <= i + k; j++)
             {
                 int x = Math.abs(a[i] - a[j]);
                 if (x <= delta)
@@ -79,8 +79,39 @@ public class CloserNumbersExist
         int[] a = new int[]{1, 5, 9, 13, 17, 21, 14};
         int k = 2;
         int d = 3;
-        System.out.println(closeNumbersExist(a, k , d));
+        System.out.println(closeNumbersExist(a, k, d));
 
-        System.out.println(closeNumbersExist3(a, k , d));
+        System.out.println(closeNumbersExist3(a, k, d));
+    }
+
+
+    private static boolean closeNumbersExist4(int[] a, int k, int delta)
+    {
+        TreeSet<Integer> bst = new TreeSet<>();
+        int rem = 0;
+        for (int i = 0; i < a.length; i++)
+        {
+            Integer x = bst.ceiling(a[i]);
+            if (x != null && x - a[i] <= delta)
+            {
+                return true;
+            }
+            x = bst.floor(a[i]);
+            if(x != null && a[i] - x <= delta)
+            {
+                return true;
+            }
+            bst.add(a[i]);
+            /*if (bst.size() > k)
+            {
+                bst.remove(a[rem++]);
+            }*/
+            if (i >= k)
+            {
+                bst.remove(a[i - k]);
+            }
+        }
+
+        return false;
     }
 }
